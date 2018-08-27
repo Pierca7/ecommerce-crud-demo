@@ -1,0 +1,152 @@
+﻿/* -- General -- */
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color:#fffff3 ;    /*#e9ecef*/
+}
+
+.container {
+    max-width: 95%;
+    padding-top:10px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.no-deco:hover {
+    text-decoration:none;
+}
+
+#toUp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: block;
+    z-index: 10;
+}
+
+/* -- Navbar -- */
+
+.navbar-icons {
+    font-size: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.5rem;
+}
+
+    .navbar-icons:hover {
+        color: #ddd;
+    }
+
+.navbar {
+    background-color: #333;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 5px 30px;
+    border-bottom: 3px solid #777;
+}
+
+.nav-item .nav-link {
+    color: #fff;
+    font-size: 18px;
+    padding: 0 20px;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+    .nav-item .nav-link::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #fff;
+        transition: width .3s;
+    }
+
+    .nav-item .nav-link:hover::after {
+        width: 100%;
+        transition: width .3s;
+    }
+
+    .dropdown-menu-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+    pointer-events: none;
+}
+
+/* -- Productos -- */
+
+.nombreProducto {
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+
+.producto {
+    -webkit-box-shadow:0;
+    box-shadow: 0;
+}
+
+    .producto:hover {
+        -webkit-box-shadow: 0 18px 35px #cccccc, 0 8px 15px #777777;
+        box-shadow: 0 18px 35px #cccccc, 0 8px 15px #777777;
+    }
+
+.img-producto {
+    max-width:256px;
+    max-height:256px;
+}
+
+/* -- Home -- */
+
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: initial;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.carousel-caption h3 {
+font-size:10vw;
+}
+    .carousel-caption p {
+        font-size: 3vw;
+
+    }
+
+
+/* -- Social Media -- */
+.social {
+    position: fixed;
+    display: block;
+    z-index: 10;
+    top: 40%;
+    right: 10px;
+}
+
+.social-icon {
+    transition: all 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    transform: scale(1.3);
+}
+

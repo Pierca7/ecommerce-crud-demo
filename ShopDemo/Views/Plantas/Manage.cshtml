@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ShopDemo.Models.Entities.Product>
+
+@{
+    ViewBag.Title = "Manage";
+}
+<div class="container">
+    <h2 class="my-3">Administar productos</h2>
+
+    <h4 class="mb-3">
+        @Html.ActionLink("Crear producto", "Create")
+    </h4>
+    <label><strong>Filtrar</strong></label>
+    <input id="Filter" type="text" class="form-control w-50" />
+    <br />
+
+    @foreach (var item in Model)
+    {
+        <div class="row py-2 border-bottom border-secondary" id="@item.Name">
+            <div class="col-2">
+                <img class="img-fluid" alt="Foto del producto" src="@item.Image" width="64" />
+            </div>
+
+            <div class="col-sm-2">
+                <p><strong>@Html.DisplayFor(modelItem => item.Name)</strong></p>
+            </div>
+
+            <div class="col-sm-2">
+                <p>$@Html.DisplayFor(modelItem => item.Price)</p>
+            </div>
+
+            <div class="col-2">
+                <p>@Html.DisplayFor(modelItem => item.StockQuantity) en stock</p>
+            </div>
+
+            <div class="col-2">
+                <p>@Html.DisplayFor(modelItem => item.DiscountPercent)%</p>
+            </div>
+            <div class="col-2">
+                <a class="btn btn-dark m-1" href="@Url.Action("Edit", "Plantas", new { id = item.ID})">Editar</a>
+                @using (Html.BeginForm("Delete", "Plantas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="@item.ID" name="id" />
+                    <button class="btn btn-danger m-1" type="submit" id="Eliminar">Eliminar</button>
+                }
+            </div>
+        </div>
+
+    }
+
+</div>
+

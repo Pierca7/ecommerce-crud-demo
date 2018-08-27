@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - El Vivero</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <header>
+        @Html.Partial("_Navbar")
+    </header>
+
+    <aside>
+        @Html.Partial("_SocialMedia")
+    </aside>
+
+    @RenderBody()
+
+    <footer>
+        <div class="text-center mt-2">
+            <p class="text-center">&copy; @DateTime.Now.Year - ShopDemo</p>
+        </div>
+    </footer>
+
+    <button class="btn btn-info p-0" type="button" id="toUp"><i class="large material-icons align-middle">keyboard_arrow_up</i></button>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿@model ShopDemo.Models.Entities.CartItem
+<!--Ficha del Producto / Version carrito-->
+
+<div class="row">
+
+    <div class="col-sm-3">
+        <!--Imagen-->
+        <img class=" d-block align-middle" src="@Model.Product.Image" alt="Imagen" height="128" width="128">
+    </div>
+
+    <div class="col-sm-6">
+        <!--Nombre-->
+        <a class="nombreProducto" href="@Url.Action("Details", "Plantas", new { id = Model.Product.ID})">@Html.DisplayFor(model => model.Product.Name)</a>
+
+        <!--Precio-->
+        <h4 class="font-weight-bold text-primary">
+            @if (Model.Product.DiscountPercent > 0)
+            {
+                <del class="text-muted">$@Html.DisplayFor(model => model.Product.Price)</del>
+            }
+            $@Html.DisplayFor(model => model.Product.DealPrice)
+        </h4>
+
+        <!--Cantidad agregada-->
+        <p>Cantidad agregada: @Model.QuantityAdded</p>
+    </div>
+
+    <!--Eliminar del carro-->
+    @using (Html.BeginForm("Cart", "Plantas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" value="@Model.Product.ID" name="id" />
+        <button class="btn btn-danger" type="submit" id="Eliminar">Eliminar</button>
+    }
+
+</div>
+<hr class="border-secondary" />
+

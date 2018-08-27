@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <!--Configuracion de usuario-->
+        <li class="dropdown mx-2 my-1">
+            <a title="Manage" class="dropdown no-deco" aria_haspopup="true" aria_expanded="false" href="@Url.Action("Index", "Manage")"><i class="material-icons navbar-icons">account_circle</i></a>
+            <div class="dropdown-menu dropdown-menu-center position-absolute m-0">
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="dropdown-item" href=@Url.Action("Manage", "Plantas")>Administrar</a>
+                }
+                <a class="dropdown-item" href="@Url.Action("Index", "Manage")">Configurar usuario</a>
+                <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+            </div>
+        </li>
+    }
+}
+else
+{
+    <!--Registrase-->
+    <li class="nav-item mx-2 my-auto">@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+
+    <!--Iniciar Sesion-->
+    <li class="nav-item mx-2 my-auto">@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+}

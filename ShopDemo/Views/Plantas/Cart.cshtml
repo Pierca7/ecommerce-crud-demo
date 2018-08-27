@@ -1,0 +1,31 @@
+﻿@model HashSet<ShopDemo.Models.Entities.CartItem>
+@{
+    ViewBag.Title = "Mi carrito";
+}
+
+<div class="container">
+    <h3>Mi Carrito</h3>
+    <hr class="border-secondary" />
+    @if (Model != null)
+    {
+        <div class="row text-center">
+            <p class="text-danger">@ViewBag.Message</p>
+        </div>
+        foreach (var item in Model)
+        {
+            Html.RenderPartial("_ProductoCart", item);
+        }
+
+        if (Model.Count > 0)
+        {
+            <div class="row m-1">
+                <h4 class="font-weight-bold">Precio final: $@ViewBag.TotalPrice</h4>
+            </div>
+
+            <div class="text-center">
+                <a class="btn btn-dark" href="@Url.Action("CheckOut","Plantas")">Comprar</a>
+            </div>
+        }
+    }
+    <a href="@Url.Action("Index", "Plantas")">Volver</a>
+</div>

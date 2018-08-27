@@ -1,0 +1,51 @@
+﻿@using PagedList.Mvc;
+@model ShopDemo.Models.ViewModels.PlantasIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row mb-2 w-100 px-3">
+        <p class="">Items @Model.ProductList.FirstItemOnPage - @Model.ProductList.LastItemOnPage de @Model.ProductList.TotalItemCount</p>
+
+        <div class="dropdown show ml-auto">
+            <a class="btn btn-sm btn-dark dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ordenar
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                @foreach (var item in Model.OrderList)
+                {
+                    <a class="dropdown-item" href="@Url.Action("Index", "Plantas", new { type = Model.Type, ppp = Model.ProductList.PageSize, page = Model.ProductList.PageNumber, order = item})">@item.Replace("_", " ")</a>
+                }
+            </div>
+        </div>
+
+        <div class="dropdown show ml-2">
+            <a class="btn btn-sm btn-dark dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Mostrar
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                @for (int i = 1, j = 6; j <= 24; i++)
+                {
+                    <a class="dropdown-item" href="@Url.Action("Index", "Plantas", new { type = Model.Type, ppp = j, page = Model.ProductList.PageNumber, order = Model.Order })">@j items</a>
+                    j *= 2;
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row w-100 justify-content-center">
+        @for (int i = 0; i < Model.ProductList.Count; i++)
+        {
+            Html.RenderPartial("_Producto", Model.ProductList.ElementAt(i));
+        }
+    </div>
+
+    <div class="row w-100 justify-content-center">
+        @Html.PagedListPager(Model.ProductList, page => Url.Action("Index", "Plantas", new { page, type = Model.Type, ppp = Model.ProductList.PageSize, order = Model.Order }))
+    </div>
+</div>
+
+
+
+

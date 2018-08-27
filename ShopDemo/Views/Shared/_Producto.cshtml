@@ -1,0 +1,40 @@
+﻿@model ShopDemo.Models.Entities.Product
+<!--Ficha del producto-->
+
+<div class="col-auto mx-2 my-4 producto text-center">
+
+    <!--Imagen-->
+    <img class="img-fluid py-2 img-producto" src="@Model.Image" alt="Imagen">
+
+    <!--Nombre-->
+    <a class="card-title m-2 text-truncate nombreProducto" href="@Url.Action("Details", "Plantas", new { id = Model.ID })" title="@Html.DisplayFor(model => model.Name)">@Html.DisplayFor(model => model.Name)</a>
+
+    <!--Precio-->
+    <h3 class="card-title m-2 text-primary font-weight-bold">
+        @if (Model.DiscountPercent > 0)
+        {
+            <del class="text-muted font-weight-normal">$@Html.DisplayFor(model => model.Price)</del>
+        }
+$@Html.DisplayFor(model => model.DealPrice)
+    </h3>
+
+
+    <!--Cuotas-->
+    <p class="mb-1"><i class="material-icons align-middle">credit_card</i> 12 cuotas sin interés</p>
+
+    <!--Ver producto / Sin stock-->
+    @{ if (Model.StockQuantity > 0)
+        {
+            <a class="btn btn-primary mt-2 mb-2" href="@Url.Action("Details", "Plantas", new { id = Model.ID })">Ver producto</a>
+            <p class="text-success mb-3">En Stock</p>
+        }
+        else
+        {
+            <a class="btn btn-danger mt-2 mb-2 disabled" href="">No disponible</a>
+            <p class="text-danger mb-3">Sin Stock</p>
+        }
+    }
+
+</div>
+
+

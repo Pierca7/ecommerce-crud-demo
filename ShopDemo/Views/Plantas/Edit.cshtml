@@ -1,0 +1,29 @@
+﻿@model ShopDemo.Models.Entities.Product
+
+@{    
+    ViewBag.Title = "Editar";
+}
+
+<div class="container">
+    <h2 class="text-center">Editar @Model.Name</h2>
+    <hr class="border-secondary" />
+
+    @using (Html.BeginForm("Edit", "Plantas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        @Html.Partial("_ProductoInput", Model)
+
+        <div class="text-center">
+            <button class="btn btn-dark" type="submit" value="Edit">Editar</button>
+        </div>
+
+    }
+
+    <div>
+        @Html.ActionLink("Volver", "Manage")
+    </div>
+</div>

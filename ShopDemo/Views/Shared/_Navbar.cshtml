@@ -1,0 +1,73 @@
+﻿<!-- --Navbar-- -->
+
+<nav class="navbar navbar-expand-xl">
+    <div class="container pt-0">
+        <!--Marca/Home-->
+        <a class="mr-auto" href="@Url.Action("Index", "Home", new { area = "" })"><img src="~/Images/Demo.png" alt="Marca" height="35" /></a>
+
+        <!--Menu desplegable(Solo navbar reducida)-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="material-icons navbar-icons">dehaze</span>
+        </button>
+
+        <!--Items dentro del desplegable-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <!--Ver productos-->
+                <li class="nav-item dropdown mx-auto my-1">
+                    @Html.ActionLink("Plantas", "Index", "Plantas", new { area = "", type = "" }, new { id = "plantasMenuButton", @class = "nav-link", aria_haspopup = "true", aria_expanded = "false" })
+                    <div class="dropdown-menu" aria-labelledby="plantasMenuButton">
+                        @Html.ActionLink("Flores", "Index", "Plantas", new { area = "", type = "Flores" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Deco", "Index", "Plantas", new { area = "", type = "Deco" }, new { @class = "dropdown-item" })
+                        <div class="dropdown-divider border border-secondary"></div>
+                        @Html.ActionLink("Frutas", "Index", "Plantas", new { area = "", type = "Frutas" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Verduras", "Index", "Plantas", new { area = "", type = "Verduras" }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+
+                <!--Contacto-->
+                <li class="nav-item mx-auto my-1">
+                    @Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+                </li>
+
+                <!--Acerca de-->
+                <li class="nav-item mx-auto my-1">
+                    @Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                </li>
+            </ul>
+
+            <!--Barra de busqueda-->
+            @using (Html.BeginForm("Index", "Plantas", FormMethod.Get, new { enctype = "multipart/form-data", @id = "searchbar", @class = "form-inline my-2 mx-auto" }))
+            {
+                <input class="mr-sm-2 form-control" type="text" placeholder="Buscar" aria-label="Buscar" name="text" id="text">
+                <button class="btn btn-light mr-4 my-1" type="submit">Buscar</button>
+            }
+
+            <ul class="navbar-nav ml-auto">
+                <!--Carrito-->
+                <li class="mx-auto my-1">
+                    <a title="Cart" class="no-deco" role="button" href="@Url.Action("Cart", "Plantas")"><i class="material-icons navbar-icons">shopping_cart</i></a>
+                </li>
+
+                <!--Configuracion de usuario-->
+                @Html.Partial("_LoginPartial")
+
+                <!--Barra de busqueda (Solo navbar reducida)-->
+                <li class="mx-auto my-1">
+                    <div class="dropdown d-none" id="searchbar-sm">
+                        <a class="no-deco" id="dropdownMenuButton" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons navbar-icons">search</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-center m-auto position-absolute" aria-labelledby="dropdownMenuButton">
+                            <form class="form-inline my-2 mx-auto" action="/Plantas" method="get">
+                                <input class="mx-1 my-1 form-control" type="text" placeholder="Buscar" aria-label="Buscar" name="text" id="text">
+                                <button class="btn btn-secondary mx-auto my-1" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

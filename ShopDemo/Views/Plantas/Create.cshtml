@@ -1,0 +1,26 @@
+﻿@model ShopDemo.Models.Entities.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+    <h2 class="text-center font-weight-bold p-2">Agregar un nuevo producto</h2>
+    <hr class="border-secondary" />
+    @using (Html.BeginForm("Create", "Plantas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.Partial("_ProductoInput", Model)
+
+        <div class="text-center">
+            <button class="btn btn-dark" type="submit" value="Create">Agregar</button>
+        </div>
+
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/MyScripts")
+}
