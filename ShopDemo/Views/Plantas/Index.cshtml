@@ -13,7 +13,7 @@
             <a class="btn btn-sm btn-dark dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Ordenar
             </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu m-0" aria-labelledby="dropdownMenuLink">
                 @foreach (var item in Model.OrderList)
                 {
                     <a class="dropdown-item" href="@Url.Action("Index", "Plantas", new { type = Model.Type, ppp = Model.ProductList.PageSize, page = Model.ProductList.PageNumber, order = item})">@item.Replace("_", " ")</a>
@@ -25,7 +25,7 @@
             <a class="btn btn-sm btn-dark dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Mostrar
             </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu m-0" aria-labelledby="dropdownMenuLink">
                 @for (int i = 1, j = 6; j <= 24; i++)
                 {
                     <a class="dropdown-item" href="@Url.Action("Index", "Plantas", new { type = Model.Type, ppp = j, page = Model.ProductList.PageNumber, order = Model.Order })">@j items</a>
