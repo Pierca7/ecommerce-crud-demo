@@ -1,22 +1,21 @@
 # ecommerce-crud-demo
 
-Una aplicación web desarrollada en .NET MVC que simula ser un sitio de E-Commerce. Incluye productos almacenados en una base de datos SQL (permite la creación de nuevos y la edición o borrado de los existentes), control de stock automático, carrito de compras por usuario y diferentes filtros de búsqueda de productos. Incluye una API simple que devuelve productos por ID (instrucciones en la pestaña "acerca de" dentro de la aplicación)
+A we application developed using .NET Framework MVC which simulates an E-Commerce website. It includes several pre-added products in a SQL database, also allowing the creation of new ones and the editing or deletion of them.
+It has an automatic stock control, not allowing the user to add sold out stuff to their cart. 
 
 Frontend -> HTML - CSS - JavaScript - (Bootstrap 4.x, JQuery 3.x).
 Backend -> .NET Framework 4.5 (C#) -> Entity Framework 6 (Code First) -> SQL Server.
 
+### Important
 
-## IMPORTANTE
-Solución desarrollada en Visual Studio 2017. Requiere de base de datos local instalada para su uso. (https://stackoverflow.com/questions/42774739/how-to-install-localdb-2016-along-with-visual-studio-2017).
+Solution developed using Visual Studio 2017. The database requires MS LocalDB installed to be imported, more details at https://stackoverflow.com/questions/42774739/how-to-install-localdb-2016-along-with-visual-studio-2017
 
+## Highlights
 
-### Funcionalidades destacadas
+* Authentication using Microsoft Identity with roles of user and admin.
 
-* Autenticación por medio de cuentas individuales (Identity) con roles de usuario y administrador. La base de datos provista tiene ya guardados una cuenta con rol de usuario y otra con rol de administrador, los datos de acceso pueden verse en la página de inicio de sesión dentro de la aplicación. Todas las cuentas nuevas que se registren se clasifican automáticamente como usuarios.
+* Admin panel to perform CRUD operations on the products.
 
-* Pestaña exclusiva para administradores que permite agregar, quitar o editar productos.
+* Order products as you wish, search by name.
 
-* Posibilidad de ordenar los productos según diferentes criterios, barra de búsqueda por nombre.
-
-* Carrito de compras diferenciado según usuario anónimo (guardado de datos por sesión) y usuario registrado (el carrito es guardado en la base de datos). Checkeo de stock al momento de la compra.
-
+* Product cart for anonymous and logged in users.
